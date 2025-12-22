@@ -1,5 +1,5 @@
 /* Advent of Code 2025 solution by zo3
- * Day 1: Secret Agent
+ * Day 1: Secret Entrance
  * https://adventofcode.com/2025/day/1
  * Solves in 0.008 seconds (real time measured with the linux time command) on a slow chromebook
 */
