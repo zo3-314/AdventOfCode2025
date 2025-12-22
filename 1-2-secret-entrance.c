@@ -1,7 +1,7 @@
 /* Advent of Code 2025 solution by zo3
- * Day 1: Secret Entrance Pt. 1
+ * Day 1: Secret Entrance Pt. 2
  * https://adventofcode.com/2025/day/1
- * Solves in 0.008 seconds (real time measured with the linux time command) on a slow chromebook
+ * Solves in 0.021 seconds (real time measured with the linux time command) on a slow chromebook
 */
 
 #include <stdio.h>
@@ -48,17 +48,19 @@ int main() {
         } else if (inputText[i] == '\n' && numChar[0] != '\0') {
             numBuffer = atoi(numChar);
 
-            if (direction == true) {
-                dialPosition += numBuffer;
-            } else {
-                dialPosition -= numBuffer;
-            }
+            for (int i = 0; i < numBuffer; i++) {
+                if (direction == true) {
+                    dialPosition++;
+                } else {
+                    dialPosition--;
+                }
 
-            /* Use modulo so that we can handle large numbers without a for loop */
-            dialPosition = ((dialPosition % 100) + 100) % 100;
+                /* Use modulo so that we can handle large numbers without a for loop */
+                dialPosition = ((dialPosition % 100) + 100) % 100;
 
-            if (dialPosition == 0) {
-                zeroCount++;
+                if (dialPosition == 0) {
+                    zeroCount++;
+                }
             }
 
             numChar[0] = '\0';
