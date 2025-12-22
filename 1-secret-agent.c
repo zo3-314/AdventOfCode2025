@@ -1,3 +1,9 @@
+/* Advent of Code 2025 solution by zo3
+ * Day 1: Secret Agent
+ * https://adventofcode.com/2025/day/1
+ * Solves in 0.008 seconds (real time measured with the linux time command) on a slow chromebook
+*/
+
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
@@ -6,14 +12,13 @@
 
 /* Maximum length a line in the input file may be */
 #define LINE_LENGTH 6
+#define DIAL_STARTING_POSITION 50
 
 int main() {
     /* ---------- FILE READING ----------- */
-    FILE *inputFile;
+    FILE *inputFile = fopen("input1.txt", "r");
     char lineBuffer[LINE_LENGTH];
     char inputText[20000] = {0}; /* 20000 approximated from file, may be reduced for memory optimization */
-
-    inputFile = fopen("input1.txt", "r");
 
     if (inputFile == NULL) {
         printf("ERROR: Failed to open input file: input1.txt (does it exist?)\n");
@@ -28,9 +33,9 @@ int main() {
     fclose(inputFile);
 
     /* ---------- DIAL LOGIC ---------- */
-    int dialPosition = 50;
+    int dialPosition = DIAL_STARTING_POSITION;
     int zeroCount = 0;
-    int numBuffer = 0;
+    int numBuffer;
     int lenBuffer;
     bool direction = true; /* false: left true: right*/
     char numChar[LINE_LENGTH - 2] = {0};
