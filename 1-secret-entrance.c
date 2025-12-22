@@ -73,4 +73,6 @@ int main() {
     }
 
     printf("%i\n", zeroCount);
+
+    return 0;
 }
