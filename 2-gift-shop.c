@@ -4,10 +4,6 @@
  * Solves in x seconds (real time measured with the linux time command) on a slow chromebook
 */
 
-/* Idea:
- * Check for repeating by splitting the number in half and comparing the two halves. (e.g. 1010 -> 10 & 10 = invalid)
-*/
-
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
@@ -16,7 +12,7 @@
 
 /* Defines the length in characters of the input file array */
 #define FILE_SIZE 500
-#define MAX_NUM_LENGTH 50 /* 10 */
+#define MAX_NUM_LENGTH 11
 
 int main() {
     FILE *inputFile = fopen("input2.txt", "r");
@@ -65,28 +61,20 @@ int main() {
                 if (lenBuffer < 2) { continue; }
 
                 if (lenBuffer % 2 == 0) {
+                    bool isInvalid = true;
+                    
                     for (int j = 0; j < lenBuffer / 2; j++) {
-                        if (numChar[j] != numChar[j + (lenBuffer / 2)]) { /* TODO: Handle odd numbers */
+                        if (numChar[j] != numChar[j + (lenBuffer / 2)]) {
+                            isInvalid = false;
                             break;
                         }
-
-                        if (j == (lenBuffer / 2) - 1) {
-                            printf("1: %ld\n", i);
-                            answer += i;
-                        }
                     }
-                } else {
-                    for (int j = 0; j < lenBuffer; j++) {
-                        if (j == 0) { numBuffer = numChar[j]; }
 
-                        if (numChar[j] != numBuffer) { break; }
-
-                        if (j == lenBuffer - 1) { answer += i; printf("2: %ld\n", i); }
-                    }
+                    if (isInvalid) { answer += i; }
                 }
-
-                numChar[0] = '\0'; /* May be able to move this out of this for loop */
             }
+
+            numChar[0] = '\0';
         }
     }
 
