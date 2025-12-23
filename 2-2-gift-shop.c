@@ -1,7 +1,7 @@
 /* Advent of Code 2025 solution by zo3
  * Day 2: Gift Shop Pt. 2
  * https://adventofcode.com/2025/day/2
- * Solves in x seconds (real time measured with the linux time command) on a slow chromebook
+ * Solves in 0.431 seconds (real time measured with the linux time command) on a slow chromebook
 */
 
 #include <stdio.h>
@@ -62,24 +62,18 @@ int main() {
 
                 if (lenBuffer < 2) { continue; }
 
-                // for (int j = 0; j < lenBuffer; j++) { /* 111 */
-                //     if (j == 0) { numBuffer = numChar[j]; }
+                for (int k = 1; k < lenBuffer / 2 + 1; k++) {
+                    if (lenBuffer % k != 0) { continue; }
 
-                //     if (numChar[j] != numBuffer) { break; }
-
-                //     if (j == lenBuffer - 1) { printf("1: %ld\n", i); answer += i; handled = true; }
-                // }
-                
-                // if (handled == true) { continue; }
-
-                for (int k = 1; k < lenBuffer / 2 + 1; k++) { /* 1010, 100100, 10001000 */
                     for (int j = 0; j < lenBuffer; j++) {
                         if (j < k) {
                             numChar2[j] = numChar[j];
                             continue;
-                        } if (numChar[j] != numChar2[j % k]) {
-                            break;
-                        } if (j == lenBuffer - 1) { printf("2: %ld, %d\n", i, k); answer += i; handled = true; }
+                        }
+                        
+                        if (numChar[j] != numChar2[j % k]) { break; } 
+                        
+                        if (j == lenBuffer - 1) { answer += i; handled = true; }
                     }
 
                     if (handled == true) { break; }
