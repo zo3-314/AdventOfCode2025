@@ -39,7 +39,7 @@ int main() {
     char numChar[MAX_NUM_LENGTH] = {0};
     char numChar2[MAX_NUM_LENGTH] = {0};
 
-    for (int i = 0; i <= strlen(inputText); i++) {
+    for (long i = 0; i <= (long)strlen(inputText); i++) {
         if (isdigit((unsigned char)inputText[i])) {
             lenBuffer = strlen(numChar);
 
@@ -62,15 +62,15 @@ int main() {
 
                 if (lenBuffer < 2) { continue; }
 
-                for (int j = 0; j < lenBuffer; j++) { /* 111 */
-                    if (j == 0) { numBuffer = numChar[j]; }
+                // for (int j = 0; j < lenBuffer; j++) { /* 111 */
+                //     if (j == 0) { numBuffer = numChar[j]; }
 
-                    if (numChar[j] != numBuffer) { break; }
+                //     if (numChar[j] != numBuffer) { break; }
 
-                    if (j == lenBuffer - 1) { answer += i; handled = true; }
-                }
+                //     if (j == lenBuffer - 1) { printf("1: %ld\n", i); answer += i; handled = true; }
+                // }
                 
-                if (handled == true) { continue; }
+                // if (handled == true) { continue; }
 
                 for (int k = 1; k < lenBuffer / 2 + 1; k++) { /* 1010, 100100, 10001000 */
                     for (int j = 0; j < lenBuffer; j++) {
@@ -79,7 +79,7 @@ int main() {
                             continue;
                         } if (numChar[j] != numChar2[j % k]) {
                             break;
-                        } if (j == lenBuffer - 1) { answer += i; handled = true; }
+                        } if (j == lenBuffer - 1) { printf("2: %ld, %d\n", i, k); answer += i; handled = true; }
                     }
 
                     if (handled == true) { break; }
