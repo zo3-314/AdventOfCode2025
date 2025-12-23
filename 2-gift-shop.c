@@ -62,6 +62,8 @@ int main() {
                 snprintf(numChar, MAX_NUM_LENGTH, "%ld", i);
                 lenBuffer = strlen(numChar);
 
+                if (lenBuffer < 2) { continue; }
+
                 if (lenBuffer % 2 == 0) {
                     for (int j = 0; j < lenBuffer / 2; j++) {
                         if (numChar[j] != numChar[j + (lenBuffer / 2)]) { /* TODO: Handle odd numbers */
@@ -69,6 +71,7 @@ int main() {
                         }
 
                         if (j == (lenBuffer / 2) - 1) {
+                            printf("1: %ld\n", i);
                             answer += i;
                         }
                     }
@@ -78,7 +81,7 @@ int main() {
 
                         if (numChar[j] != numBuffer) { break; }
 
-                        if (j == lenBuffer - 1) { answer += i; }
+                        if (j == lenBuffer - 1) { answer += i; printf("2: %ld\n", i); }
                     }
                 }
 
