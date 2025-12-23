@@ -1,7 +1,7 @@
 /* Advent of Code 2025 solution by zo3
  * Day 2: Gift Shop Pt. 1
  * https://adventofcode.com/2025/day/2
- * Solves in x seconds (real time measured with the linux time command) on a slow chromebook
+ * Solves in 0.363 seconds (real time measured with the linux time command) on a slow chromebook
 */
 
 #include <stdio.h>
@@ -62,7 +62,7 @@ int main() {
 
                 if (lenBuffer % 2 == 0) {
                     bool isInvalid = true;
-                    
+
                     for (int j = 0; j < lenBuffer / 2; j++) {
                         if (numChar[j] != numChar[j + (lenBuffer / 2)]) {
                             isInvalid = false;
